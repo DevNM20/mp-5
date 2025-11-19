@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react";
-import createNewUrl from "../lib/createNewUrl";
+import createUrl from "../lib/createUrl";
 
 export default function HomePage() {
   const [shortUrl, setShortUrl] = useState<string | null>(null);
@@ -12,7 +12,7 @@ export default function HomePage() {
     const alias = (formData.get("alias") as string).trim();
     const targetUrl = (formData.get("targetUrl") as string).trim();
 
-    const result = await createNewUrl(alias, targetUrl);
+    const result = await createUrl(alias, targetUrl);
     setShortUrl(`${window.location.origin}/${result.alias}`);
   }
 
